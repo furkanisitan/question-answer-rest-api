@@ -1,0 +1,50 @@
+### get profile
+GET {{url}}/account
+Authorization: Bearer {{auth_token}}
+
+### get all questions
+GET {{url}}/account/questions
+Authorization: Bearer {{auth_token}}
+
+### get all answers
+GET {{url}}/account/answers
+Authorization: Bearer {{auth_token}}
+
+### update profile
+PATCH {{url}}/account
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+    "name": "Updated Name",
+    "title": "Updated Title",
+    "website": "example.com"
+}
+
+### update profile image
+PUT {{url}}/account/profile-image
+Content-Type: multipart/form-data; boundary=boundary
+Authorization: Bearer {{auth_token}}
+
+--boundary
+Content-Disposition: form-data; name="profile-image"; filename="javascript.png"
+Content-Type: image/jpeg
+
+< ./images/javascript.png
+
+### forgot password
+POST {{url}}/account/recovery
+Content-Type: application/json
+
+{
+  "email": "testuser@gmail.com"
+}
+
+### reset password
+# rpt: get from email
+PUT {{url}}/account/recovery?rpt={resetPasswordToken}
+Content-Type: application/json
+
+{
+  "password": "newPassword"
+}

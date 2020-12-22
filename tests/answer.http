@@ -1,0 +1,43 @@
+### get all answers of question
+# qid: question id
+GET {{url}}/questions/{qid}/answers
+
+### filter answers by content
+GET {{url}}/questions/{qid}/answers?search={content]
+
+### paginate answers
+GET {{url}}/questions/{qid}/answers?page={page}&limit={limit}
+
+### sort answers
+# sort: 'most-liked' => by likeCount, 'default' => by createdAt
+GET {{url}}/questions/{qid}/answers?sort={sort}
+
+### get answer of question
+GET {{url}}/questions/{qid}/answers/{id}
+
+### add answer to question
+POST {{url}}/questions/{qid}/answers
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "content":"This is an answer content"
+}
+
+### update answer
+PUT {{url}}/questions/{qid}/answers/{id}
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "content":"This is an updated answer content"
+}
+
+### like answer - undo like
+# like: true => like, false => undo like
+PATCH {{url}}/questions/{qid}/answers/{id}?like={true/false}
+Authorization: Bearer {{auth_token}}
+
+### delete answer
+DELETE {{url}}/questions/{qid}/answers/{id}
+Authorization: Bearer {{auth_token}}

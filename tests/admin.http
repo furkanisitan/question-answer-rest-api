@@ -1,0 +1,20 @@
+### get all users
+GET {{url}}/admin/users
+Authorization: Bearer {{auth_token}}
+
+### get user by id
+GET {{url}}/admin/users/{id}
+Authorization: Bearer {{auth_token}}
+
+### update user
+PATCH {{url}}/admin/users/{id}
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+    "blocked": true
+}
+
+### delete user
+DELETE {{url}}/admin/users/{id}
+Authorization: Bearer {{auth_token}}

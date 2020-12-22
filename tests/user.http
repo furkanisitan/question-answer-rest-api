@@ -1,0 +1,40 @@
+### get all users
+GET {{url}}/users
+
+### filter user by name
+GET {{url}}/users?search={name}
+
+### paginate the users
+GET {{url}}/users?page={page}&limit={limit}
+
+### get user by id
+GET {{url}}/users/{id}
+
+### sign up
+POST {{url}}/users/signup
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "testuser@gmail.com",
+  "password":"123456"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
+
+### login
+POST {{url}}/users/login
+Content-Type: application/json
+
+{
+  "email": "testuser@gmail.com",
+  "password":"123456"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
+
+### logout
+POST {{url}}/users/logout
+Authorization: Bearer {{auth_token}}
+
+> {% client.global.set("auth_token", "none"); %}
