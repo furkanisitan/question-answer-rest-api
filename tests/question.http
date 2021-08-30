@@ -1,0 +1,44 @@
+### get all questions
+GET {{url}}/questions
+
+### filter questions by title
+GET {{url}}/questions?search={title}
+
+### paginate questions
+GET {{url}}/questions?page={page}&limit={limit}
+
+### sort questions
+# sort: 'most-liked' => by likeCount, 'most-answered' => by answerCount, 'default' => by createdAt
+GET {{url}}/questions?sort=most-answered
+
+### get question by id
+GET {{url}}/questions/{id}
+
+### add question
+POST {{url}}/questions
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "title":"This is a question title",
+  "content":"This is a question content"
+}
+
+### update question
+PUT {{url}}/questions/{id}
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "title": "This is an updated question title",
+  "content": "This is an updated question content"
+}
+
+### like question - undo like
+# like: true => like, false => undo like
+PATCH {{url}}/questions/{id}?like={true/false}
+Authorization: Bearer {{auth_token}}
+
+### delete question
+DELETE {{url}}/questions/{id}
+Authorization: Bearer {{auth_token}}
